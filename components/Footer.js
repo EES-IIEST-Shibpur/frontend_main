@@ -25,13 +25,13 @@ export default function Footer() {
             </div>
             <div className="pt-2">
               <p className="font-bold">General Secretary</p>
-              <p>Sanjay Sharma</p>
-              <a href="mailto:2021eeb077.sanjay@students.iiests.ac.in" className="text-ees-100 text-sm hover:underline">2021eeb077.sanjay@students.iiests.ac.in</a>
+              <p>Ruman Paul</p>
+              <a href="mailto:2022eeb002.ruman@students.iiests.ac.in" className="text-ees-100 text-sm hover:underline">2022eeb002.ruman@students.iiests.ac.in</a>
             </div>
              <div className="pt-2">
-              <p className="font-bold">Treasurer</p>
-              <p>Niloy Mondal</p>
-              <a href="mailto:2022eeb013.niloy@students.iiests.ac.in" className="text-ees-100 text-sm hover:underline">2022eeb013.niloy@students.iiests.ac.in</a>
+              <p className="font-bold">Vice President</p>
+              <p>Ambhrin Roy</p>
+              <a href="mailto:2022eeb100.ambhrin@students.iiests.ac.in" className="text-ees-100 text-sm hover:underline">2022eeb100.ambhrin@students.iiests.ac.in</a>
             </div>
           </div>
 
@@ -40,14 +40,14 @@ export default function Footer() {
             <h3 className="text-xl font-bold text-ees-100 uppercase mb-4">Contact Us</h3>
             <div className="flex flex-col items-center md:items-start space-y-3">
               <p>Contact No: <span className="font-mono">6376153144</span></p>
-              <p>Email: <a href="mailto:iiest1981ees@gmail.com" className="underline">iiest1981ees@gmail.com</a></p>
+              <p>Email: <a href="mailto:contact@eesiiests.org" className="underline">contact@eesiiests.org</a></p>
               
               {/* Social Icons */}
               <div className="flex space-x-4 pt-4">
-                <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Facebook size={20} /></a>
-                <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Instagram size={20} /></a>
-                <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Linkedin size={20} /></a>
-                <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Youtube size={20} /></a>
+                <a href="https://www.facebook.com/ees.iiest.shibpur" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Facebook size={20} /></a>
+                <a href="https://www.instagram.com/ees_iiests/" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Instagram size={20} /></a>
+                <a href="https://www.linkedin.com/company/ees-iiests/" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Linkedin size={20} /></a>
+                <a href="https://www.youtube.com/@electricalengineerssociety8968" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><Youtube size={20} /></a>
               </div>
             </div>
           </div>
