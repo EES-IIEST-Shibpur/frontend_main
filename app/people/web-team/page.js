@@ -7,7 +7,7 @@ import { User, Code, Terminal } from 'lucide-react';
 import { webTeamData } from '@/lib/peopleData';
 
 export default function WebTeamPage() {
-  const [activeYear, setActiveYear] = useState("2022-23");
+  const [activeYear, setActiveYear] = useState("2025-26");
 
   return (
     <div className="min-h-screen bg-[#FAFAF9] font-sans text-slate-900">
