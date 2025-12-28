@@ -10,6 +10,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState(null);
+  const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -17,6 +18,10 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileSubmenu = (name) => {
+    setActiveMobileSubmenu(activeMobileSubmenu === name ? null : name);
+  };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
@@ -84,16 +89,67 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu (Simplified for brevity) */}
-      {isOpen && (
-        <div className="lg:hidden bg-white h-screen absolute top-full w-full border-t p-4">
-           {navLinks.map(link => (
-             <div key={link.name} className="py-2 border-b">
-               <span className="font-bold text-slate-800">{link.name}</span>
-             </div>
-           ))}
-        </div>
-      )}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white absolute top-full left-0 w-full border-t shadow-lg overflow-y-auto max-h-[calc(100vh-80px)]"
+          >
+            <div className="flex flex-col p-4 space-y-2">
+              {navLinks.map((link) => (
+                <div key={link.name} className="border-b border-slate-100 last:border-none">
+                  {link.submenu ? (
+                    <div>
+                      <button 
+                        onClick={() => toggleMobileSubmenu(link.name)}
+                        className="flex justify-between items-center w-full py-3 text-slate-800 font-medium"
+                      >
+                        {link.name}
+                        <ChevronDown 
+                          size={16} 
+                          className={`transition-transform duration-200 ${activeMobileSubmenu === link.name ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {activeMobileSubmenu === link.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden bg-slate-50 rounded-md"
+                          >
+                            {link.submenu.map((subItem) => (
+                              <Link 
+                                key={subItem.name} 
+                                href={subItem.href}
+                                onClick={() => setIsOpen(false)}
+                                className="block px-4 py-2 text-sm text-slate-600 hover:text-ees-700"
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link 
+                      href={link.href} 
+                      onClick={() => setIsOpen(false)}
+                      className="block py-3 text-slate-800 font-medium hover:text-ees-700"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
