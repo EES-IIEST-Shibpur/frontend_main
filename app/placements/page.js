@@ -181,7 +181,7 @@ import { placementYears } from '@/lib/placementData'; // Ensure you made this fi
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
 export default function PlacementsPage() {
-  const [activeYear, setActiveYear] = useState('2022'); // Defaulting to the one I saw in screenshot
+  const [activeYear, setActiveYear] = useState('2025'); // Defaulting to the one I saw in screenshot
 
   return (
     <div className="min-h-screen bg-white font-sans">
