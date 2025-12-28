@@ -26,9 +26,9 @@ export default function ApticrackPage() {
            </div>
 
            <div>
-              <button className="w-full border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 hover:bg-slate-900 hover:text-white transition uppercase">
-                Previous Year Question Papers 
-              </button>
+              <a href="https://apticrack.eesiiests.org" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 hover:bg-slate-900 hover:text-white transition uppercase inline-block text-center">
+                Visit Apticrack
+              </a>
            </div>
         </div>
 
