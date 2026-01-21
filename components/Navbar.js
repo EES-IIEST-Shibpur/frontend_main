@@ -11,6 +11,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
+  const pathname = usePathname();
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -19,14 +20,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const toggleMobileSubmenu = (name) => {
     setActiveMobileSubmenu(activeMobileSubmenu === name ? null : name);
   };
 
+  const isActive = (href) => pathname === href;
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'
-    }`}>
+    <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md py-3 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           
@@ -37,7 +47,7 @@ export default function Navbar() {
                {/* Use standard img tag if Image component fails setup initially */}
                <img src="/images/home/ees-logo.png" alt="EES Logo" className="object-contain" /> 
              </div>
-             <span className={`text-xl font-bold tracking-tight uppercase ${scrolled ? 'text-ees-900' : 'text-slate-800'}`}>
+             <span className="text-xl font-bold tracking-tight uppercase text-ees-900">
                Electrical Engineers' Society
              </span>
           </Link>
@@ -51,7 +61,14 @@ export default function Navbar() {
                 onMouseEnter={() => setHoveredMenu(link.name)}
                 onMouseLeave={() => setHoveredMenu(null)}
               >
-                <Link href={link.href || '#'} className="flex items-center text-sm font-semibold text-slate-700 hover:text-ees-700 py-2">
+                <Link 
+                  href={link.href || '#'} 
+                  className={`flex items-center text-sm font-semibold py-2 transition-colors ${
+                    isActive(link.href) 
+                      ? 'text-ees-700' 
+                      : 'text-slate-700 hover:text-ees-700'
+                  }`}
+                >
                   {link.name}
                   {link.submenu && <ChevronDown size={14} className="ml-1" />}
                 </Link>
@@ -66,7 +83,15 @@ export default function Navbar() {
                       className="absolute top-full left-0 w-56 bg-white shadow-xl rounded-lg overflow-hidden border border-slate-100 py-2"
                     >
                       {link.submenu.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.href} className="block px-4 py-2 text-sm text-slate-600 hover:bg-ees-50 hover:text-ees-700 transition-colors">
+                        <Link 
+                          key={subItem.name} 
+                          href={subItem.href} 
+                          className={`block px-4 py-2 text-sm transition-colors ${
+                            isActive(subItem.href)
+                              ? 'bg-ees-50 text-ees-700'
+                              : 'text-slate-600 hover:bg-ees-50 hover:text-ees-700'
+                          }`}
+                        >
                           {subItem.name}
                         </Link>
                       ))}
@@ -103,16 +128,24 @@ export default function Navbar() {
                 <div key={link.name} className="border-b border-slate-100 last:border-none">
                   {link.submenu ? (
                     <div>
-                      <button 
-                        onClick={() => toggleMobileSubmenu(link.name)}
-                        className="flex justify-between items-center w-full py-3 text-slate-800 font-medium"
-                      >
-                        {link.name}
-                        <ChevronDown 
-                          size={16} 
-                          className={`transition-transform duration-200 ${activeMobileSubmenu === link.name ? 'rotate-180' : ''}`}
-                        />
-                      </button>
+                      <div className="flex justify-between items-center w-full py-3">
+                         <Link 
+                           href={link.href}
+                           onClick={() => setIsOpen(false)}
+                           className="text-slate-800 font-medium flex-grow hover:text-ees-700"
+                         >
+                           {link.name}
+                         </Link>
+                         <button 
+                           onClick={() => toggleMobileSubmenu(link.name)}
+                           className="p-2 -mr-2 text-slate-500 hover:text-ees-700"
+                         >
+                           <ChevronDown 
+                             size={20} 
+                             className={`transition-transform duration-200 ${activeMobileSubmenu === link.name ? 'rotate-180' : ''}`}
+                           />
+                         </button>
+                      </div>
                       <AnimatePresence>
                         {activeMobileSubmenu === link.name && (
                           <motion.div
