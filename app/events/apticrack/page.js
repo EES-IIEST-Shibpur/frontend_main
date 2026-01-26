@@ -18,7 +18,7 @@ export default function ApticrackPage() {
            
            <div className="bg-ees-700 text-white p-6 rounded-lg shadow-lg mb-8 inline-block">
               <h3 className="text-2xl font-bold flex items-center gap-3">
-                 <CalendarCheck size={28}/> Takes Place Every Sunday
+                 <CalendarCheck size={28}/> Takes Place Every Saturday
               </h3>
               <p className="flex items-center gap-2 mt-2 opacity-90">
                  <Clock size={18}/> 7:00 PM Onwards
@@ -26,9 +26,14 @@ export default function ApticrackPage() {
            </div>
 
            <div>
-              <button className="w-full border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 hover:bg-slate-900 hover:text-white transition uppercase">
-                Previous Year Question Papers 
-              </button>
+              <a 
+                href="https://apticrack.eesiiests.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-full text-center border-2 border-slate-900 text-slate-900 font-bold py-3 px-6 hover:bg-slate-900 hover:text-white transition uppercase"
+              >
+                Visit Apticrack Portal
+              </a>
            </div>
         </div>
 

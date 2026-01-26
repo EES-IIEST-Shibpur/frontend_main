@@ -18,7 +18,7 @@ export default function SocietyPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-20">
-         {/* Split into Faculty (Top 2) and Students (Rest) */}
+         {/* Patrons */}
          <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Patrons</h2>
          <div className="flex flex-wrap justify-center gap-10 mb-20">
             {societyTeam.slice(0, 2).map((member, idx) => (
@@ -26,9 +26,18 @@ export default function SocietyPage() {
             ))}
          </div>
 
-         <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Core Committee</h2>
-         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {societyTeam.slice(2).map((member, idx) => (
+         {/* Core Committee */}
+         <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Core Member 2025-26</h2>
+         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
+            {societyTeam.slice(2).filter(m => !m.role.includes('Representative')).map((member, idx) => (
+               <TeamCard key={idx} member={member} />
+            ))}
+         </div>
+
+         {/* Year Representatives */}
+         <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Year Representatives</h2>
+         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+            {societyTeam.filter(m => m.role.includes('Representative')).map((member, idx) => (
                <TeamCard key={idx} member={member} />
             ))}
          </div>
@@ -41,8 +50,11 @@ export default function SocietyPage() {
 
 // Reusable Card with Image Fallback
 function TeamCard({ member, isFaculty }) {
-  // Use specific image if defined in data, otherwise use null
-  const initialImage = member.image ? `/images/people/${member.image}` : null;
+  // Use specific image if defined in data, check if it is absolute path or relative filename
+  const initialImage = member.image 
+    ? (member.image.startsWith('/') ? member.image : `/images/people/${member.image}`)
+    : null;
+    
   const [imgSrc, setImgSrc] = useState(initialImage);
   const [error, setError] = useState(false);
 

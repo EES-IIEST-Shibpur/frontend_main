@@ -20,7 +20,7 @@ export default function Footer() {
               </div>
               <div className="text-left">
                  <h2 className="text-2xl font-bold uppercase tracking-wider leading-tight">Electrical Engineers'<br className="block sm:hidden" /> Society</h2>
-                 <p className="text-ees-300 text-sm mt-1">IIEST Shibpur | Est. 1912</p>
+                 <p className="text-ees-300 text-sm mt-1">IIEST Shibpur | Est. 1981</p>
               </div>
            </div>
            
@@ -63,13 +63,13 @@ export default function Footer() {
                />
                <PersonCard 
                  role="General Secretary" 
-                 name="Sanjay Sharma" 
-                 email="2021eeb077.sanjay@students.iiests.ac.in" 
+                 name="Ruman Paul" 
+                 email="2022eeb002.ruman@students.iiests.ac.in" 
                />
                <PersonCard 
-                 role="Treasurer" 
-                 name="Niloy Mondal" 
-                 email="2022eeb013.niloy@students.iiests.ac.in" 
+                 role="Vice President" 
+                 name="Ambhrin Roy" 
+                 email="2022eeb100.ambhrin@students.iiests.ac.in" 
                />
             </div>
           </div>
@@ -80,15 +80,15 @@ export default function Footer() {
              <div className="space-y-4">
                 <div className="flex items-center gap-3 text-ees-100">
                    <Mail size={18} className="text-ees-400" />
-                   <a href="mailto:iiest1981ees@gmail.com" className="hover:text-white transition">iiest1981ees@gmail.com</a>
+                   <a href="mailto:contact@eesiiests.org" className="hover:text-white transition">contact@eesiiests.org</a>
                 </div>
                 
                 {/* Social Icons Grid */}
                  <div className="flex gap-4 pt-2">
-                   <SocialIcon Icon={Facebook} href="https://facebook.com" />
-                   <SocialIcon Icon={Instagram} href="https://instagram.com" />
-                   <SocialIcon Icon={Linkedin} href="https://linkedin.com" />
-                   <SocialIcon Icon={Youtube} href="https://youtube.com" />
+                   <SocialIcon Icon={Facebook} href="https://facebook.com/ees.iiest.shibpur" />
+                   <SocialIcon Icon={Instagram} href="https://instagram.com/ees_iiests" />
+                   <SocialIcon Icon={Linkedin} href="https://linkedin.com/in/ees_iiests" />
+                   <SocialIcon Icon={Youtube} href="https://youtube.com/@electricalengineerssociety8968" />
                  </div>
              </div>
           </div>
@@ -119,15 +119,18 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-16 pt-8 border-t border-ees-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-ees-400">
-           <p>&copy; {new Date().getFullYear()} Electrical Engineers' Society. All rights reserved.</p>
+         <div className="font-body text-xs text-muted-foreground pt-4 border-t border-border w-full text-center">
+            &copy; {new Date().getFullYear()} <a href="https://www.eesiiests.org" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Electrical Engineers' Society</a>. Designed by EES Web Team.
+          </div>
+        {/* <div className="mt-16 pt-8 border-t border-ees-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-ees-400">
+           <p>&copy; {new Date().getFullYear()} Electrical Engineers' Society. Designed by EES Web Team</p> */}
            
-           <Link href="/people/web-team" className="flex items-center gap-2 px-4 py-2 bg-ees-800/50 rounded-full hover:bg-ees-800 transition-colors group">
+           {/* <Link href="/people/web-team" className="flex items-center gap-2 px-4 py-2 bg-ees-800/50 rounded-full hover:bg-ees-800 transition-colors group">
              <span>Made with</span>
              <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" />
              <span>by <span className="text-white font-medium group-hover:text-ees-300 transition-colors">EES Web Team</span></span>
-           </Link>
-        </div>
+           </Link> */}
+        {/* </div> */}
       </div>
     </footer>
   );

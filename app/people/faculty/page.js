@@ -52,9 +52,20 @@ export default function FacultyPage() {
                 
                 {/* Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                   <span className="text-white text-sm font-semibold tracking-wide uppercase px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm">
-                     View Details
-                   </span>
+                   {prof.profileUrl ? (
+                     <a 
+                       href={prof.profileUrl}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-white text-sm font-semibold tracking-wide uppercase px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm hover:bg-white/20 transition-colors"
+                     >
+                       View Profile
+                     </a>
+                   ) : (
+                     <span className="text-white text-sm font-semibold tracking-wide uppercase px-4 py-1 border border-white/30 rounded-full backdrop-blur-sm cursor-default">
+                       {prof.name}
+                     </span>
+                   )}
                 </div>
               </div>
 
@@ -89,6 +100,20 @@ export default function FacultyPage() {
                     <div className="flex items-center gap-3">
                       <Phone size={16} className="text-ees-500 flex-shrink-0" />
                       <span>{prof.phone}</span>
+                    </div>
+                  )}
+
+                  {prof.profileUrl && (
+                    <div className="flex items-center gap-3 pt-2 text-ees-600">
+                      <ExternalLink size={16} className="flex-shrink-0" />
+                      <a 
+                        href={prof.profileUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-sm font-semibold hover:underline"
+                      >
+                        IIEST Profile
+                      </a>
                     </div>
                   )}
                 </div>

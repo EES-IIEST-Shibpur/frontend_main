@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
            <StatItem number="1912" label="Year Founded" icon={<Calendar size={24}/>} />
            <StatItem number="1936" label="First B.Tech Batch" icon={<BookOpen size={24}/>} />
-           <StatItem number="40+" label="NIRF Ranking" icon={<Award size={24}/>} />
+           <StatItem number="54" label="NIRF Ranking 2025" icon={<Award size={24}/>} />
            <StatItem number="91%" label="Placement Rate" icon={<Users size={24}/>} />
         </div>
       </section>

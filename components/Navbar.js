@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Menu, X, ChevronDown } from 'lucide-react'; // Icons
 import { navLinks } from '@/lib/navigationData';
+import SearchModal from '@/components/SearchModal';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
@@ -104,7 +106,10 @@ export default function Navbar() {
 
           {/* Search & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-             <button className="p-2 text-slate-600 hover:text-ees-700 transition-colors">
+             <button 
+                className="p-2 text-slate-600 hover:text-ees-700 transition-colors"
+                onClick={() => setIsSearchOpen(true)}
+             >
                <Search size={20} />
              </button>
              <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
@@ -113,6 +118,8 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Mobile Menu */}
       <AnimatePresence>

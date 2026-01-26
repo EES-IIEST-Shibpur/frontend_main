@@ -1,302 +1,244 @@
-// 'use client';
-// import { motion } from 'framer-motion';
-// import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-// import Navbar from '@/components/Navbar';
-// import Footer from '@/components/Footer';
-// import { placementStats, recruiters } from '@/lib/placementData';
-// import { TrendingUp, Users, Briefcase } from 'lucide-react';
-
-// export default function PlacementsPage() {
-//   return (
-//     <div className="min-h-screen bg-slate-50 font-sans">
-//       <Navbar />
-
-//       {/* --- HERO SECTION --- */}
-//       <section className="relative bg-ees-900 py-32 text-center text-white overflow-hidden">
-//          {/* Background pattern */}
-//          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
-         
-//          <motion.h1 
-//            initial={{ y: 20, opacity: 0 }}
-//            animate={{ y: 0, opacity: 1 }}
-//            className="text-4xl md:text-6xl font-extrabold mb-6 relative z-10"
-//          >
-//            Placements @ EE
-//          </motion.h1>
-//          <p className="text-xl text-ees-100 max-w-2xl mx-auto px-4 font-light relative z-10">
-//            "Connecting Students with Career Building Opportunities"
-//          </p>
-//       </section>
-
-//       {/* --- STATS COUNTER --- */}
-//       <div className="max-w-7xl mx-auto px-4 -mt-16 relative z-20">
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//           <StatCard 
-//             icon={<TrendingUp size={32} />} 
-//             value="56 LPA" 
-//             label="Highest Package (2024)" 
-//             delay={0}
-//           />
-//           <StatCard 
-//             icon={<Users size={32} />} 
-//             value="89%" 
-//             label="Placement Rate" 
-//             delay={0.2}
-//           />
-//           <StatCard 
-//             icon={<Briefcase size={32} />} 
-//             value="130+" 
-//             label="Recruiting Companies" 
-//             delay={0.4}
-//           />
-//         </div>
-//       </div>
-
-//       <div className="max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-16 items-start">
-        
-//         {/* --- LEFT: TEXT CONTENT (Scraped Text) --- */}
-//         <div className="prose prose-lg text-slate-600">
-//           <h2 className="text-3xl font-bold text-slate-800 mb-6 border-l-4 border-ees-500 pl-4">
-//             Unlocking Potential
-//           </h2>
-//           <p>
-//             With excellent education research facilities, and world-class teachers we help students excel in their inherent potential. 
-//             Students are involved in different research projects, innovations, entrepreneurship activities and short term courses to gather knowledge.
-//           </p>
-//           <p>
-//             Apart from education, research and social activities, we arrange programmes to improve soft skills, professional communication 
-//             and personality through career counselling by professional agencies/experts.
-//           </p>
-//           <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 mt-8">
-//              <h3 className="text-blue-900 font-bold text-lg mb-2">Support We Provide:</h3>
-//              <ul className="list-disc pl-5 space-y-2 text-sm text-blue-800">
-//                <li>Professional resume writing workshops</li>
-//                <li>Management development programs by experts</li>
-//                <li>Direct interaction with industry leaders</li>
-//              </ul>
-//           </div>
-//         </div>
-
-//         {/* --- RIGHT: INTERACTIVE CHART (The 2024 Upgrade) --- */}
-//         <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-//           <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">Year-wise Highest Package (LPA)</h3>
-          
-//           <div className="h-80 w-full">
-//             <ResponsiveContainer width="100%" height="100%">
-//               <BarChart data={placementStats}>
-//                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-//                 <XAxis 
-//                    dataKey="year" 
-//                    tick={{fill: '#64748b'}} 
-//                    axisLine={false}
-//                    tickLine={false}
-//                 />
-//                 <YAxis 
-//                    tick={{fill: '#64748b'}} 
-//                    axisLine={false}
-//                    tickLine={false}
-//                    unit=" LPA"
-//                 />
-//                 <Tooltip 
-//                    cursor={{fill: '#f1f5f9'}}
-//                    contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-//                 />
-//                 <Bar 
-//                    dataKey="highest" 
-//                    fill="#be123c"  // The EES Red
-//                    radius={[4, 4, 0, 0]}
-//                    barSize={50}
-//                    animationDuration={2000}
-//                 />
-//               </BarChart>
-//             </ResponsiveContainer>
-//           </div>
-//           <p className="text-center text-xs text-slate-400 mt-4">
-//              Source: IIEST Placement Cell Records
-//           </p>
-//         </div>
-
-//       </div>
-
-//       {/* --- TOP RECRUITERS SCROLLER --- */}
-//       <section className="bg-slate-100 py-16 overflow-hidden">
-//          <h3 className="text-center text-2xl font-bold text-slate-800 mb-10">Our Past Recruiters</h3>
-         
-//          {/* Infinite Marquee Animation */}
-//          <div className="flex gap-16 whitespace-nowrap animate-marquee">
-//             {[...recruiters, ...recruiters].map((rec, i) => (
-//                <div key={i} className="inline-flex items-center space-x-2 text-2xl font-bold text-slate-400 grayscale opacity-70">
-//                  {/* 
-//                      For now, I'm rendering text.
-//                      If you downloaded logos, uncomment the image line: 
-//                      <img src={rec.logo} alt={rec.name} className="h-12 w-auto" />
-//                  */}
-//                  <span>{rec.name}</span>
-//                </div>
-//             ))}
-//          </div>
-//       </section>
-      
-//       {/* Quick Add css for marquee in styles block below if tailwind plugin not present */}
-//       <style jsx>{`
-//         @keyframes scroll {
-//           0% { transform: translateX(0); }
-//           100% { transform: translateX(-50%); }
-//         }
-//         .animate-marquee {
-//           animation: scroll 20s linear infinite;
-//         }
-//       `}</style>
-
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// // Stats Card Component
-// function StatCard({ icon, value, label, delay }) {
-//   return (
-//     <motion.div 
-//       initial={{ y: 20, opacity: 0 }}
-//       animate={{ y: 0, opacity: 1 }}
-//       transition={{ delay }}
-//       className="bg-white p-6 rounded-xl shadow-lg border-b-4 border-ees-500 text-center"
-//     >
-//       <div className="bg-rose-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-ees-600 mb-4">
-//         {icon}
-//       </div>
-//       <h3 className="text-3xl font-extrabold text-slate-800">{value}</h3>
-//       <p className="text-sm font-medium text-slate-500 uppercase tracking-wide mt-2">{label}</p>
-//     </motion.div>
-//   )
-// }
-
-'use client';
+﻿'use client';
 import { useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { placementYears } from '@/lib/placementData'; // Ensure you made this file
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import { placementData } from '@/lib/placementData';
+import { motion, AnimatePresence } from 'framer-motion';
+import { TrendingUp, Users, Award, ExternalLink, Calendar } from 'lucide-react';
 
 export default function PlacementsPage() {
-  const [activeYear, setActiveYear] = useState('2022'); // Defaulting to the one I saw in screenshot
+  const [activeBatch, setActiveBatch] = useState(placementData[0].batch);
+  const currentData = placementData.find(d => d.batch === activeBatch) || placementData[0];
+
+  const getPassingYear = (batch) => {
+    if(!batch) return '';
+    const parts = batch.split('-');
+    return parts.length === 2 ? '20' + parts[1] : batch;
+  };
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <Navbar />
 
-      {/* --- HERO SECTION WITH GROUP IMAGE --- */}
+      {/* --- HERO SECTION --- */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0">
-             {/* Make sure 'hero-group.jpg' is in public/images/placements/ */}
              <Image 
                src="/images/placements/hero-group.jpg" 
                alt="Placements Group" 
                fill
-               className="object-cover opacity-60"
+               className="object-cover opacity-50"
                priority
              />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-white pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20">
           <motion.div 
-            initial={{ opacity: 0, x: -50 }} 
-            animate={{ opacity: 1, x: 0 }}
-            className="border-l-8 border-ees-500 pl-6 md:pl-10"
+            initial={{ opacity: 0, y: 30 }} 
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center md:text-left"
           >
-             <h1 className="text-4xl md:text-7xl font-extrabold uppercase leading-tight tracking-tight">
-               Connecting Students<br/>
-               <span className="text-ees-300">With Career Building</span><br/>
-               Opportunities
+             <h1 className="text-4xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+               Build Your <span className="text-ees-400">Career</span><br/>
+               With EES
              </h1>
+             <p className="text-xl md:text-2xl text-slate-300 max-w-2xl font-light">
+               Consistent excellence in placement records, bridging the gap between academic brilliance and industry demands.
+             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* --- CONTENT SECTION --- */}
-      <div className="max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-16 items-start">
+      {/* --- PLACEMENT STATS SELECTOR & CARD --- */}
+      <section className="max-w-5xl mx-auto px-6 py-20 relative z-20">
         
-        {/* Left Side: Placements@EE Text */}
-        <div className="prose prose-lg text-slate-600">
-           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8 flex items-center">
-             Placements<span className="text-ees-700">@EE</span>
-           </h2>
-           <p className="lead text-lg">
-             With excellent education research facilities, and world-class teachers we help students excel in their inherent potential. Students are involved in different research projects, innovations, entrepreneurship activities and short term courses to gather knowledge.
+        {/* Header & Verification Link */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+           <div className="text-red-900">
+             <h2 className="text-3xl font-bold">Placement Statistics</h2>
+             {/* <p className="text-sm opacity-80 mt-1">Select a batch to view details</p> */}
+           </div>
+           
+           <a 
+             href="https://www.iiests.ac.in/IIEST/Placement"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="flex items-center gap-2 text-sm font-semibold text-ees-900 hover:text-ees-600 transition-colors bg-white shadow-md px-4 py-2 rounded-full"
+           >
+             Verify with IIEST Placement Cell <ExternalLink size={14}/>
+           </a>
+        </div>
+
+        {/* Year Toggle Buttons */}
+        <div className="flex flex-wrap gap-2 mb-8 bg-white/50 p-2 rounded-xl backdrop-blur-sm border border-white/20 shadow-sm md:shadow-none md:border-none md:bg-transparent md:backdrop-blur-none">
+          {placementData.map((data) => (
+            <button
+              key={data.batch}
+              onClick={() => setActiveBatch(data.batch)}
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                activeBatch === data.batch
+                  ? 'bg-ees-900 text-white shadow-md scale-105'
+                  : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 shadow-sm'
+              }`}
+            >
+              <Calendar size={14} className={activeBatch === data.batch ? 'opacity-100' : 'opacity-40'} />
+              {getPassingYear(data.batch)}
+            </button>
+          ))}
+        </div>
+
+        {/* Single Detailed Card Display */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeBatch}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+               
+               {/* --- CARD HEADER --- */}
+               <div className="bg-gradient-to-r from-slate-50 to-white px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 gap-4">
+                  <div>
+                    <span className="text-sm font-bold text-slate-600 uppercase tracking-widest block mb-1">Electrical Engineering</span>
+                    <h3 className="text-3xl font-extrabold text-red-900">Batch of {getPassingYear(currentData.batch)}</h3>
+                  </div>
+                  <div className="flex items-center gap-3 bg-green-50 text-green-700 px-5 py-2 rounded-full border border-green-100 shadow-sm">
+                    <TrendingUp size={20} />
+                    <span className="text-xl font-bold">{currentData.placementRate}%</span>
+                    <span className="text-xs font-bold uppercase tracking-wide opacity-80">Placed</span>
+                  </div>
+               </div>
+
+               {/* --- MAIN METRICS --- */}
+               <div className="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  
+                  {/* Highest Package Block */}
+                  <div className="bg-rose-50 rounded-2xl p-6 text-center border border-rose-100 relative overflow-hidden group">
+                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        {/* <TrendingUp size={80} className="text-rose-600" /> */}
+                     </div>
+                     <div className="relative z-10">
+                        <div className="text-rose-600 mb-2 font-medium flex items-center justify-center gap-2 text-sm">
+                           <Award size={18}/> Highest Package
+                        </div>
+                        <div className="text-4xl font-extrabold text-slate-900 tracking-tight my-2">
+                           {currentData.highestPackage} <span className="text-xl text-slate-500 font-medium">LPA</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Average Package Block */}
+                  <div className="bg-blue-50 rounded-2xl p-6 text-center border border-blue-100 relative overflow-hidden group">
+                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        {/* <Users size={80} className="text-blue-600" /> */}
+                     </div>
+                     <div className="relative z-10">
+                        <div className="text-blue-600 mb-2 font-medium flex items-center justify-center gap-2 text-sm">
+                           <Users size={18}/> Average Package
+                        </div>
+                        <div className="text-4xl font-extrabold text-slate-900 tracking-tight my-2">
+                           {currentData.averagePackage} <span className="text-xl text-slate-500 font-medium">LPA</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Median Package Block */}
+                  <div className="bg-emerald-50 rounded-2xl p-6 text-center border border-emerald-100 relative overflow-hidden group">
+                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        {/* <TrendingUp size={80} className="text-emerald-600" /> */}
+                     </div>
+                     <div className="relative z-10">
+                        <div className="text-emerald-600 mb-2 font-medium flex items-center justify-center gap-2 text-sm">
+                           <TrendingUp size={18}/> Median Package
+                        </div>
+                        <div className="text-4xl font-extrabold text-slate-900 tracking-tight my-2">
+                           {currentData.medianPackage} <span className="text-xl text-slate-500 font-medium">LPA</span>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+
+               {/* --- PROGRESS & RECRUITERS --- */}
+               <div className="px-8 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-slate-50 pt-8 mt-4">
+                  
+                  {/* Progress Bar Section */}
+                  <div className="md:col-span-1 flex flex-col justify-center gap-4">
+                     <div className="space-y-3">
+                        <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                           <span className="text-slate-500">Eligible Students</span>
+                           <span className="text-lg text-slate-800">{currentData.eligibleStudents}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                           <span className="text-slate-500">Placed Students</span>
+                           <span className="text-lg text-slate-800">{currentData.placedStudents}</span>
+                        </div>
+                     </div>
+                     {/* <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="bg-slate-900 h-2 rounded-full transition-all duration-1000 ease-out" 
+                          style={{ width: `${(currentData.placedStudents / currentData.eligibleStudents) * 100}%` }}
+                        ></div>
+                     </div> */}
+                  </div>
+
+                  {/* Recruiters Section */}
+                  <div className="md:col-span-2">
+                     <p className="text-xs text-slate-400 font-bold uppercase mb-4 tracking-widest">Top Recruiters for this Batch</p>
+                     <div className="flex flex-wrap gap-3">
+                        {currentData.topRecruiters.map((company, i) => (
+                           <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 text-sm font-bold border border-slate-200 rounded-lg hover:bg-white hover:shadow-md hover:border-ees-200 transition-all cursor-default">
+                              {company}
+                           </span>
+                        ))}
+                     </div>
+                  </div>
+
+               </div>
+
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+      </section>
+
+      {/* --- CONTENT SECTION --- */}
+      <section className="max-w-7xl mx-auto px-6 pb-20 grid lg:grid-cols-2 gap-16 items-center">
+         <div className="prose prose-lg text-slate-600">
+           <h3 className="text-2xl font-bold text-slate-800 mb-4 border-l-4 border-ees-500 pl-4">
+             Unlocking Potential
+           </h3>
+           <p>
+             With excellent education research facilities, and world-class teachers we help students excel in their inherent potential. 
+             Students are involved in different research projects, innovations, entrepreneurship activities and short term courses to gather knowledge.
            </p>
            <p>
-             Apart from education, research and social activities, we arrange programmes to improve soft skills, professional communication and personality through career counselling by professional agencies/experts.
+             Apart from education, research and social activities, we arrange programmes to improve soft skills, professional communication 
+             and personality through career counselling by professional agencies/experts.
            </p>
-           <div className="mt-8 p-6 bg-slate-50 border-l-4 border-ees-500 rounded-r-xl">
-             <p className="font-semibold text-slate-800 m-0">
-               "Students are also assisted in preparing professional resumes by conducting resume writing workshops. Management development programs are conducted by experts."
-             </p>
-           </div>
-        </div>
-
-        {/* Right Side: Quick Links or Decorative Panel */}
-        <div className="hidden lg:flex justify-end relative h-full">
-           <div className="absolute top-0 right-0 w-64 h-64 bg-ees-50 rounded-full blur-3xl -z-10" />
-           {/* You can add a simplified stat graphic here if desired, or keep clean text layout */}
-        </div>
-      </div>
-
-      {/* --- THE YEAR-WISE RECORDS (TAB SYSTEM) --- */}
-      <section className="bg-slate-50 py-20 border-t border-slate-200" id="records">
-         <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-slate-900 mb-12 underline decoration-ees-500 decoration-4 underline-offset-8">
-               Our Placement Record
-            </h2>
-
-            {/* TABS HEADER */}
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-               {placementYears.map((item) => (
-                 <button
-                   key={item.year}
-                   onClick={() => setActiveYear(item.year)}
-                   className={`px-8 py-3 rounded-full text-lg font-bold transition-all duration-300 shadow-md ${
-                     activeYear === item.year
-                       ? 'bg-ees-700 text-white scale-110 shadow-ees-500/30'
-                       : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-ees-700'
-                   }`}
-                 >
-                   {item.year}
-                 </button>
-               ))}
-            </div>
-
-            {/* TAB CONTENT (IMAGE DISPLAY) */}
-            <div className="bg-white p-4 md:p-8 rounded-2xl shadow-2xl border border-slate-200 min-h-[500px] flex items-center justify-center relative overflow-hidden">
-               <AnimatePresence mode="wait">
-                 <motion.div
-                    key={activeYear}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full relative"
-                 >
-                    {/* Retrieve the specific image path from our data */}
-                    {placementYears.find(p => p.year === activeYear) ? (
-                        <div className="relative w-full h-[600px]"> {/* Height fixed to keep layout stable */}
-                           <Image 
-                              src={placementYears.find(p => p.year === activeYear).image}
-                              alt={`Placement Statistics ${activeYear}`}
-                              fill
-                              className="object-contain" // Keeps entire table visible without cropping
-                           />
-                        </div>
-                    ) : (
-                        <div className="text-center py-20 text-slate-400">
-                           <p>Data visualization for {activeYear} loading...</p>
-                        </div>
-                    )}
-                 </motion.div>
-               </AnimatePresence>
-            </div>
+         </div>
+         
+         <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 relative overflow-hidden group hover:shadow-2xl transition">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-ees-50 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110" />
+            <h4 className="text-xl font-bold text-slate-800 mb-6 relative z-10">Why Recruit from EE?</h4>
+            <ul className="space-y-4 relative z-10">
+               <li className="flex items-start gap-3">
+                  <div className="bg-green-100 text-green-700 p-1 rounded-full mt-1"><Award size={16}/></div>
+                  <span className="text-slate-600">Top 5% rankers in JEE Mains/Advanced</span>
+               </li>
+               <li className="flex items-start gap-3">
+                  <div className="bg-blue-100 text-blue-700 p-1 rounded-full mt-1"><Award size={16}/></div>
+                  <span className="text-slate-600">Rigorous Industry-oriented Curriculum</span>
+               </li>
+               <li className="flex items-start gap-3">
+                  <div className="bg-purple-100 text-purple-700 p-1 rounded-full mt-1"><Award size={16}/></div>
+                  <span className="text-slate-600">Strong Alumni Network in Core & IT Sectors</span>
+               </li>
+            </ul>
          </div>
       </section>
 
