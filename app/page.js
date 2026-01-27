@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -30,12 +31,18 @@ export default function Home() {
             "We aim at providing all the required academic support through an online platform."
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-4">
-             <button className="bg-ees-700 hover:bg-ees-600 text-white px-8 py-3 rounded-full font-bold transition shadow-lg hover:shadow-red-500/50">
+             <Link 
+               href="/events"
+               className="bg-ees-700 hover:bg-ees-600 text-white px-8 py-3 rounded-full font-bold transition shadow-lg hover:shadow-red-500/50"
+             >
                Explore Events
-             </button>
-             <button className="bg-white hover:bg-gray-100 text-ees-900 px-8 py-3 rounded-full font-bold transition shadow-lg">
+             </Link>
+             <Link 
+               href="/people/faculty"
+               className="bg-white hover:bg-gray-100 text-ees-900 px-8 py-3 rounded-full font-bold transition shadow-lg"
+             >
                Meet Faculty
-             </button>
+             </Link>
           </div>
         </div>
       </section>
