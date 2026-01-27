@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight, Calendar, MapPin, Star } from 'lucide-react';
@@ -62,7 +63,7 @@ export default function EventsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-[1200px] md:h-[600px]">
           
           {/* Card 1: Blue - Main */}
-          <motion.div whileHover={{ scale: 1.01 }} className="md:col-span-2 md:row-span-2 bg-blue-600 rounded-3xl p-8 relative overflow-hidden group">
+          <motion.div whileHover={{ scale: 1.01 }} className="md:col-span-2 md:row-span-2 bg-blue-600 rounded-3xl p-8 relative overflow-hidden group cursor-default">
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
                  <h3 className="text-4xl font-bold text-white mb-4">Experience<br/>EES</h3>
@@ -77,29 +78,38 @@ export default function EventsPage() {
           </motion.div>
 
           {/* Card 2: Image - Sphuran */}
-          <motion.div whileHover={{ scale: 1.02 }} className="bg-slate-200 rounded-3xl relative overflow-hidden group">
-            <Image src="/images/events/sphuran.jpg" alt="Sphuran" fill className="object-cover transition duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
-          </motion.div>
+          <Link href="/events/sphuran" className="contents">
+            <motion.div whileHover={{ scale: 1.02 }} className="bg-slate-200 rounded-3xl relative overflow-hidden group cursor-pointer">
+              <Image src="/images/events/sphuran.jpg" alt="Sphuran" fill className="object-cover transition duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-transparent transition flex items-end p-6">
+                <span className="text-white font-bold text-xl">Sphuran</span>
+              </div>
+            </motion.div>
+          </Link>
 
           {/* Card 3: Pink - Apticrack */}
-          <motion.div whileHover={{ scale: 1.02 }} className="bg-pink-500 rounded-3xl p-6 text-white flex flex-col justify-center relative overflow-hidden">
-             <h3 className="text-2xl font-bold mb-2 z-10">AptiCrack</h3>
-             <p className="text-pink-100 text-sm z-10">Weekly aptitude test series for placements.</p>
-             <div className="absolute -right-5 -bottom-5 text-pink-600/50">
-               <Star size={120} />
-             </div>
-          </motion.div>
+          <Link href="/events/apticrack" className="contents">
+            <motion.div whileHover={{ scale: 1.02 }} className="bg-pink-500 rounded-3xl p-6 text-white flex flex-col justify-center relative overflow-hidden cursor-pointer">
+              <h3 className="text-2xl font-bold mb-2 z-10">AptiCrack</h3>
+              <p className="text-pink-100 text-sm z-10">Weekly aptitude test series for placements.</p>
+              <div className="absolute -right-5 -bottom-5 text-pink-600/50">
+                <Star size={120} />
+              </div>
+            </motion.div>
+          </Link>
 
-          {/* Card 4: Dark - Preps */}
-          <motion.div whileHover={{ scale: 1.02 }} className="bg-slate-800 rounded-3xl p-6 text-white flex flex-col justify-center relative">
-             <h3 className="text-2xl font-bold mb-2">Preps<br/>Simplified</h3>
-             <p className="text-slate-300 text-sm">A gateway to all your exam needs.</p>
-          </motion.div>
+          {/* Card 4: Dark - Tech Simplified */}
+          <Link href="/events/tech-simplified" className="contents">
+            <motion.div whileHover={{ scale: 1.02 }} className="bg-slate-800 rounded-3xl p-6 text-white flex flex-col justify-center relative cursor-pointer">
+              <h3 className="text-2xl font-bold mb-2">Tech<br/>Simplified</h3>
+              <p className="text-slate-300 text-sm">A gateway to all your exam needs.</p>
+            </motion.div>
+          </Link>
 
           {/* Card 5: Image - Freshers */}
           <motion.div whileHover={{ scale: 1.02 }} className="bg-slate-200 rounded-3xl relative overflow-hidden group">
-             <Image src="/images/events/freshers-group.jpg" alt="Freshers" fill className="object-cover transition duration-500 group-hover:scale-110" />
+             <Image src="/images/events/freshers25.jpg" alt="Freshers" fill className="object-cover transition duration-500 group-hover:scale-110" />
+             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
           </motion.div>
 
         </div>
@@ -112,25 +122,26 @@ export default function EventsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                {[
-                 { title: "Preps Simplified", color: "bg-blue-700" },
-                 { title: "Internship Simplified", color: "bg-blue-600" },
-                 { title: "Cultural Series", color: "bg-teal-600" },
-                 { title: "AptiCrack", color: "bg-rose-600" },
-                 { title: "Tech Simplified", color: "bg-blue-800" },
-                 { title: "Seminars", color: "bg-indigo-600" },
+                 { title: "Tech Simplified", color: "bg-rose-900", link: "/events/tech-simplified" },
+                 { title: "AptiCrack", color: "bg-blue-900", link: "/events/apticrack" },
+                 { title: "Sphuran", color: "bg-teal-700", link: "/events/sphuran" },
+                 { title: "Internship Simplified", color: "bg-blue-600", link: "#" },
+                 { title: "Cultural Series", color: "bg-indigo-600", link: "#" },
+                 { title: "Seminars", color: "bg-slate-700", link: "#" },
                ].map((evt, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className={`${evt.color} h-40 rounded-xl p-8 flex flex-col justify-between text-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all cursor-pointer`}
-                  >
-                     <h3 className="text-xl font-bold">{evt.title}</h3>
-                     <div className="flex items-center text-sm font-semibold opacity-80">
-                        Learn More <ArrowRight size={14} className="ml-2"/>
-                     </div>
-                  </motion.div>
+                  <Link href={evt.link} key={i}>
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className={`${evt.color} h-40 rounded-xl p-8 flex flex-col justify-between text-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all cursor-pointer`}
+                    >
+                        <h3 className="text-xl font-bold">{evt.title}</h3>
+                        <div className="flex items-center text-sm font-semibold opacity-80">
+                            Learn More <ArrowRight size={14} className="ml-2"/>
+                        </div>
+                    </motion.div>
+                  </Link>
                ))}
             </div>
          </div>
@@ -145,31 +156,37 @@ export default function EventsPage() {
              title="Wired In" 
              desc="Wired In is an event in the INSTRUO Techno-Management fest of IIEST, Shibpur conducted by the Department of Electrical Engineering in collaboration with INSTRUO. It has several enthusiastic and exciting rounds related to the vast domain of Electrical Engineering."
              side="left"
+             imageSrc="/images/events/hero-main.jpg"
            />
            <EventDetailsBlock 
              title="Circuit Club" 
              desc="The Circuit Club is organized by the Department of Electrical Engineering and the Electrical Engineers' Society. This club enhances the practical skills and knowledge of the students in the domain of Electronics Engineering by conducting different sessions and quizzes."
              side="right"
+             imageSrc="/images/events/speaker1.jpg"
            />
            <EventDetailsBlock 
              title="Apticrack" 
              desc="Apticrack is the quiz event conducted by EES to develop the ability of students to crack the Aptitude tests. Frequent quizzes are conducted and many practice questions are provided."
              side="left"
+             imageSrc="/images/events/apticrack-tall.jpg"
            />
            <EventDetailsBlock 
              title="Internships Simplified" 
              desc="An initiative where we collect the experiences of seniors who have cracked internships in prestigious companies and post it on our social media pages. Essential guide for juniors."
              side="right"
+             imageSrc="/images/events/speaker2.jpg"
            />
            <EventDetailsBlock 
              title="Freshers' Welcome" 
              desc="The Grand Welcome into the department. Conducted by the Electrical Engineers' Society, this evening is filled with complete thrill and fun. The freshmen entertain everyone with their performances in music, dance, and drama."
              side="left"
+             imageSrc="/images/events/freshers25.jpg"
            />
            <EventDetailsBlock 
              title="Farewell" 
              desc="The dear goodbye and celebration of 4 years of togetherness. The sophomores entertain the attendees with their performances in music, dance, and drama to bid adieu to the seniors."
              side="right"
+             imageSrc="/images/events/farewell22.jpg"
            />
          </div>
       </section>
@@ -180,7 +197,7 @@ export default function EventsPage() {
 }
 
 // Sub-component for the Detail Text Blocks
-function EventDetailsBlock({ title, desc, side }) {
+function EventDetailsBlock({ title, desc, side, imageSrc }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
@@ -188,10 +205,16 @@ function EventDetailsBlock({ title, desc, side }) {
       viewport={{ once: true, margin: "-100px" }}
       className={`flex flex-col md:flex-row gap-8 items-center ${side === 'right' ? 'md:flex-row-reverse' : ''}`}
     >
-       <div className="flex-1">
+       <div className="flex-1 w-full relative">
           {/* Decorative Number/Icon Area (Could include image here later) */}
-          <div className="h-64 w-full bg-slate-100 rounded-2xl border-2 border-slate-200 flex items-center justify-center">
-             <h3 className="text-3xl font-bold text-slate-300 uppercase">{title.charAt(0)}</h3>
+          <div className="h-64 w-full bg-slate-100 rounded-2xl border-2 border-slate-200 overflow-hidden relative shadow-lg">
+             {imageSrc ? (
+               <Image src={imageSrc} alt={title} fill className="object-cover" />
+             ) : (
+                <div className="flex items-center justify-center h-full">
+                  <h3 className="text-3xl font-bold text-slate-300 uppercase">{title.charAt(0)}</h3>
+                </div>
+             )}
           </div>
        </div>
        <div className="flex-1 space-y-4">
