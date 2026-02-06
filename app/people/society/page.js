@@ -3,8 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { societyTeam } from '@/lib/peopleData';
-import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { User } from 'lucide-react';
 
 export default function SocietyPage() {
@@ -22,7 +21,7 @@ export default function SocietyPage() {
          <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Patrons</h2>
          <div className="flex flex-wrap justify-center gap-10 mb-20">
             {societyTeam.slice(0, 2).map((member, idx) => (
-               <TeamCard key={idx} member={member} isFaculty={true} />
+               <TeamCard key={`patron-${idx}-${member.name}`} member={member} isFaculty={true} />
             ))}
          </div>
 
@@ -30,7 +29,7 @@ export default function SocietyPage() {
          <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Core Member 2025-26</h2>
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
             {societyTeam.slice(2).filter(m => !m.role.includes('Representative')).map((member, idx) => (
-               <TeamCard key={idx} member={member} />
+               <TeamCard key={`core-${idx}-${member.name}`} member={member} />
             ))}
          </div>
 
@@ -38,7 +37,7 @@ export default function SocietyPage() {
          <h2 className="text-2xl font-bold text-center mb-10 text-ees-900 uppercase tracking-widest border-b pb-4">Year Representatives</h2>
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
             {societyTeam.filter(m => m.role.includes('Representative')).map((member, idx) => (
-               <TeamCard key={idx} member={member} />
+               <TeamCard key={`rep-${idx}-${member.name}`} member={member} />
             ))}
          </div>
       </div>
@@ -51,25 +50,29 @@ export default function SocietyPage() {
 // Reusable Card with Image Fallback
 function TeamCard({ member, isFaculty }) {
   // Use specific image if defined in data, check if it is absolute path or relative filename
-  const initialImage = member.image 
+  const imagePath = member.image 
     ? (member.image.startsWith('/') ? member.image : `/images/people/${member.image}`)
     : null;
     
-  const [imgSrc, setImgSrc] = useState(initialImage);
-  const [error, setError] = useState(false);
+  // Simple state to track load failure
+  const [hasError, setHasError] = useState(false);
+
+  // Reset error if image changes
+  useEffect(() => {
+    setHasError(false);
+  }, [imagePath]);
 
   return (
     <div className={`bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 flex flex-col items-center text-center group ${isFaculty ? 'w-80 shadow-2xl scale-110 border-ees-200' : 'hover:-translate-y-2 transition duration-300'}`}>
        
        {/* Image Container */}
        <div className={`relative w-full ${isFaculty ? 'h-72' : 'h-64'} bg-slate-200 flex items-center justify-center`}>
-          {!error && imgSrc ? (
-             <Image 
-               src={imgSrc} 
+          {!hasError && imagePath ? (
+             <img 
+               src={imagePath} 
                alt={member.name} 
-               fill 
-               className="object-cover"
-               onError={() => setError(true)}
+               className="w-full h-full object-cover"
+               onError={() => setHasError(true)}
              />
           ) : (
              // Fallback Icon
