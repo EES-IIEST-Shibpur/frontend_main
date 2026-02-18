@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin, Youtube, MapPin, Heart, ChevronRight, Mail } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaEnvelope, FaChevronRight } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -44,7 +44,7 @@ export default function Footer() {
                ].map((item) => (
                  <li key={item.name}>
                    <Link href={item.href} className="group flex items-center text-ees-100 hover:text-white transition-colors">
-                     <ChevronRight size={14} className="mr-2 text-ees-500 group-hover:translate-x-1 transition-transform" />
+                     <FaChevronRight size={14} className="mr-2 text-ees-500 group-hover:translate-x-1 transition-transform" />
                      {item.name}
                    </Link>
                  </li>
@@ -79,16 +79,16 @@ export default function Footer() {
              <h3 className="text-sm font-bold text-ees-300 uppercase tracking-widest border-l-2 border-ees-500 pl-3">Get in Touch</h3>
              <div className="space-y-4">
                 <div className="flex items-center gap-3 text-ees-100">
-                   <Mail size={18} className="text-ees-400" />
+                   <FaEnvelope size={18} className="text-ees-400" />
                    <a href="mailto:contact@eesiiests.org" className="hover:text-white transition">contact@eesiiests.org</a>
                 </div>
                 
                 {/* Social Icons Grid */}
                  <div className="flex gap-4 pt-2">
-                   <SocialIcon Icon={Facebook} href="https://facebook.com/ees.iiest.shibpur" />
-                   <SocialIcon Icon={Instagram} href="https://instagram.com/ees_iiests" />
-                   <SocialIcon Icon={Linkedin} href="https://linkedin.com/in/ees_iiests" />
-                   <SocialIcon Icon={Youtube} href="https://youtube.com/@electricalengineerssociety8968" />
+                   <SocialIcon Icon={FaFacebook} href="https://facebook.com/ees.iiest.shibpur" />
+                   <SocialIcon Icon={FaInstagram} href="https://instagram.com/ees_iiests" />
+                   <SocialIcon Icon={FaLinkedin} href="https://linkedin.com/in/ees_iiests" />
+                   <SocialIcon Icon={FaYoutube} href="https://youtube.com/@electricalengineerssociety8968" />
                  </div>
              </div>
           </div>
