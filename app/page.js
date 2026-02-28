@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaInstagram, FaFacebook, FaLinkedin, FaExternalLinkAlt, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(1);
   const slides = [
     { id: 'ees', component: <EESHeroSlide /> },
     { id: 'sphuran', component: <SphuranHeroSlide /> },
@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // Change slide every 6 seconds
+    }, 4000); // Change slide every 4 seconds
 
     return () => clearInterval(timer);
   }, [slides.length]);
