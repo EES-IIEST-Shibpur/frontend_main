@@ -191,106 +191,154 @@ function EESHeroSlide() {
 
 function SphuranHeroSlide() {
   return (
-    <div className="relative h-full w-full flex items-center justify-center">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-ees-900 via-ees-800 to-red-900">
-        {/* Animated Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full"
-            style={{
-              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '50px 50px'
-            }}
-          />
-        </div>
-      </div>
+    <div className="relative h-full w-full flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#1a2028' }}>
+      {/* Subtle radial glow behind the bulb */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
+        style={{ 
+          background: 'radial-gradient(circle, rgba(255,140,50,0.4) 0%, rgba(255,100,30,0.1) 40%, transparent 70%)'
+        }}
+      />
 
-      {/* SPHURAN Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        {/* Logo */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-48 h-48 relative">
-            <Image
-              src="https://res.cloudinary.com/dwr8472qb/image/upload/v1770536102/sphuran-logo_a6mzzi.png"
-              alt="SPHURAN Logo"
-              fill
-              className="object-contain drop-shadow-2xl"
-            />
-          </div>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-5xl md:text-8xl font-black text-white tracking-wider mb-4 drop-shadow-lg">
-          SPHURAN <span className="text-6xl md:text-9xl">2026</span>
-        </h1>
-
-        {/* Badge */}
-        <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-          <p className="text-white font-bold text-sm md:text-base tracking-widest">4TH EDITION</p>
-        </div>
-
-        {/* Tagline */}
-        <p className="text-2xl md:text-4xl text-yellow-300 font-bold mb-6 drop-shadow-lg">
-          WHERE INNOVATION MEETS EXCELLENCE
-        </p>
-
-        {/* Organized By */}
-        <p className="text-lg md:text-xl text-gray-200 mb-4">
-          Organized by <span className="font-bold text-white">Electrical Engineers' Society</span>
-        </p>
-        <p className="text-base md:text-lg text-gray-300 mb-8">
-          Department of Electrical Engineering, IIEST Shibpur
-        </p>
-
-        {/* Date */}
-        <div className="flex items-center justify-center gap-3 mb-10">
-          <FaCalendarAlt className="text-yellow-300" size={24} />
-          <span className="text-xl md:text-2xl text-white font-semibold">Coming Soon</span>
-        </div>
-
-        {/* Social and Website */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
-          {/* Social Icons */}
-          <div className="flex gap-4">
-            <a
-              href="https://instagram.com/_sphuran.ees"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white hover:text-ees-900 text-white transition-all duration-300"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={24} />
-            </a>
-            <a
-              href="https://facebook.com/sphuran.ees"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white hover:text-ees-900 text-white transition-all duration-300"
-              aria-label="Facebook"
-            >
-              <FaFacebook size={24} />
-            </a>
-            <a
-              href="https://linkedin.com/company/sphuran-iiest"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white hover:text-ees-900 text-white transition-all duration-300"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={24} />
-            </a>
-          </div>
-
-          {/* Website Button */}
-          <a
-            href="https://sphuran.eesiiests.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-white text-ees-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition-all shadow-lg hover:shadow-yellow-300/50"
+      {/* Main Content Container */}
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto px-6">
+        
+        {/* Neon Lightbulb SVG */}
+        <div className="relative flex-shrink-0">
+          <svg 
+            width="200" 
+            height="320" 
+            viewBox="0 0 200 320" 
+            className="drop-shadow-2xl"
+            style={{ filter: 'drop-shadow(0 0 20px rgba(255,140,50,0.6))' }}
           >
-            Visit Website
-            <FaExternalLinkAlt size={20} />
-          </a>
+            {/* Wire/Cord */}
+            <line 
+              x1="100" 
+              y1="0" 
+              x2="100" 
+              y2="80" 
+              stroke="#ff8c32" 
+              strokeWidth="3"
+              style={{ filter: 'drop-shadow(0 0 8px rgba(255,140,50,0.8))' }}
+            />
+            
+            {/* Socket */}
+            <rect x="85" y="80" width="30" height="40" rx="3" fill="#2a3240" stroke="#3a4250" strokeWidth="2"/>
+            <rect x="88" y="85" width="24" height="8" rx="2" fill="#1a2028"/>
+            <rect x="88" y="97" width="24" height="8" rx="2" fill="#1a2028"/>
+            
+            {/* Bulb Glass Outline - Glowing Orange */}
+            <path 
+              d="M100 120 
+                 C65 120 45 160 45 200 
+                 C45 250 70 280 85 290 
+                 L85 300 L115 300 L115 290 
+                 C130 280 155 250 155 200 
+                 C155 160 135 120 100 120Z"
+              fill="none"
+              stroke="#ff8c32"
+              strokeWidth="4"
+              style={{ filter: 'drop-shadow(0 0 15px rgba(255,140,50,0.9))' }}
+            />
+            
+            {/* Filament inside */}
+            <path 
+              d="M92 290 L92 240 L100 230 L108 240 L108 290"
+              fill="none"
+              stroke="#ff8c32"
+              strokeWidth="2"
+              style={{ filter: 'drop-shadow(0 0 8px rgba(255,140,50,0.8))' }}
+            />
+          </svg>
+        </div>
+
+        {/* Text Content */}
+        <div className="text-center md:text-left">
+          {/* Title */}
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-2" style={{ color: '#ff8c32', textShadow: '0 0 30px rgba(255,140,50,0.5)' }}>
+            SPHURAN
+          </h1>
+          <p className="text-6xl md:text-8xl font-black text-white mb-4" style={{ textShadow: '0 0 20px rgba(255,255,255,0.2)' }}>
+            2026
+          </p>
+
+          {/* Badge */}
+          <div className="inline-block border-2 px-6 py-2 rounded-full mb-6" style={{ borderColor: '#ff8c32' }}>
+            <p className="font-bold text-sm tracking-widest" style={{ color: '#ff8c32' }}>4TH EDITION</p>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-lg md:text-xl text-gray-400 mb-6 max-w-md">
+            Where <span className="font-semibold" style={{ color: '#ff8c32' }}>Innovation</span> Meets <span className="font-semibold" style={{ color: '#ff8c32' }}>Excellence</span>
+          </p>
+
+          {/* Date */}
+          <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
+            <FaCalendarAlt style={{ color: '#ff8c32' }} size={20} />
+            <span className="text-lg md:text-xl text-white font-semibold">13 - 15 March, 2026</span>
+          </div>
+
+          {/* Social and Website */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            {/* Social Icons */}
+            <div className="flex gap-3">
+              <a
+                href="https://instagram.com/_sphuran.ees"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg transition-all duration-300"
+                style={{ backgroundColor: 'rgba(255,140,50,0.1)', color: '#ff8c32' }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#ff8c32'; e.currentTarget.style.color = '#1a2028'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,140,50,0.1)'; e.currentTarget.style.color = '#ff8c32'; }}
+                aria-label="Instagram"
+              >
+                <FaInstagram size={22} />
+              </a>
+              <a
+                href="https://facebook.com/sphuran.ees"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg transition-all duration-300"
+                style={{ backgroundColor: 'rgba(255,140,50,0.1)', color: '#ff8c32' }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#ff8c32'; e.currentTarget.style.color = '#1a2028'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,140,50,0.1)'; e.currentTarget.style.color = '#ff8c32'; }}
+                aria-label="Facebook"
+              >
+                <FaFacebook size={22} />
+              </a>
+              <a
+                href="https://linkedin.com/company/sphuran-iiest"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg transition-all duration-300"
+                style={{ backgroundColor: 'rgba(255,140,50,0.1)', color: '#ff8c32' }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#ff8c32'; e.currentTarget.style.color = '#1a2028'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,140,50,0.1)'; e.currentTarget.style.color = '#ff8c32'; }}
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin size={22} />
+              </a>
+            </div>
+
+            {/* Website Button */}
+            <a
+              href="https://sphuran.eesiiests.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-3 rounded-full font-bold transition-all duration-300"
+              style={{ 
+                backgroundColor: '#ff8c32', 
+                color: '#1a2028',
+                boxShadow: '0 0 20px rgba(255,140,50,0.4)'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 0 30px rgba(255,140,50,0.7)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 0 20px rgba(255,140,50,0.4)'; }}
+            >
+              Visit Website
+              <FaExternalLinkAlt size={18} />
+            </a>
+          </div>
         </div>
       </div>
     </div>
